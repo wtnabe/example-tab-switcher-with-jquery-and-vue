@@ -1,0 +1,4 @@
+#! /bin/sh
+
+cp node_modules/jquery/dist/jquery.min.js public/assets
+cp node_modules/vue/dist/vue.min.js public/assets
