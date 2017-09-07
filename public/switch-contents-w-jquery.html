@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <script type="text/javascript" src="assets/jquery.min.js"></script>
+    <title>jQueryとCSSでコンテンツスイッチ</title>
+    <style type="text/css">
+      .switchable {
+        display: none;
+      }
+    </style>
+    <script type="text/javascript">
+      $(function() {
+        $('.switchable').first().show()
+        $('label button').on('click', function() {
+          $('.switchable').hide();
+          $('#' + $(this).parent().attr('for')).show();
+        });
+      })
+    </script>
+  </head>
+  <body>
+    <h1>jQueryとCSSでコンテンツスイッチ</h1>
+
+    <label for="1"><button>その1</button></label> <label for="2"><button>その2</button></label> <label for="3"><button>その3</button></label>
+
+    <div id="1" class="switchable">
+      <h2>その1</h2>
+    </div>
+
+    <div id="2" class="switchable">
+      <h2>その2</h2>
+    </div>
+
+    <div id="3" class="switchable">
+      <h2>その3</h2>
+    </div>
+  </body>
+</html>

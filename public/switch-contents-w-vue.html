@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <script type="text/javascript" src="assets/vue.min.js"></script>
+    <title>VueとCSSでコンテンツスイッチ</title>
+    <script type="text/javascript">
+      Vue.config.silent = false
+      Vue.component('switch', {
+        template: '<button @click="clickHandler">その{{value}}</button>',
+        props: ['value'],
+        methods: {
+          clickHandler: function(e) {
+            this.$emit('switchToValue', this.value)
+          }
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <h1>VueとCSSでコンテンツスイッチ</h1>
+
+    <div id="app">
+      <template>
+      <switch v-for="(item, key) in items" :value="key" :key="key" @switchToValue="switchTo"></switch>
+      <div v-for="item in items" v-html="rawHtml">{{item}}</div>
+      </template>
+    </div>
+
+    <script>
+    new Vue({
+      el: '#app',
+      data: {
+        value: 1,
+        items: {
+          1: '<h2>その1</h2>',
+          2: '<h2>その2</h2>',
+          3: '<h2>その3</h2>'
+        }
+      },
+      methods: {
+        switchTo: function(value) {
+          this.value = value
+        }
+      },
+      created: function() {
+        console.log('switch !')
+        this.switchTo(1)
+      }
+    })
+    </script>
+
+  </body>
+</html>
